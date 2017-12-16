@@ -5,6 +5,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.RedisSerializer;
 
 public abstract class AbstractBaseRedisDao<K, V> {
+
 	@Autowired  
     private RedisTemplate<K, V> redisTemplate;  
   
@@ -21,8 +22,7 @@ public abstract class AbstractBaseRedisDao<K, V> {
     }
     /** 
      * 获取 RedisSerializer 
-     * <br>------------------------------<br> 
-     */  
+     */
     protected RedisSerializer<String> getRedisSerializer() {  
         return redisTemplate.getStringSerializer();  
     }  

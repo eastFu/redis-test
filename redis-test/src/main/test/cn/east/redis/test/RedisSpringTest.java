@@ -30,7 +30,6 @@ public class RedisSpringTest {
 
 	/**
 	 * 新增 <br>
-	 * ------------------------------<br>
 	 */
 	@Test
 	public void testAddUser() {
@@ -43,7 +42,6 @@ public class RedisSpringTest {
 
 	/**
 	 * 批量新增 普通方式 <br>
-	 * ------------------------------<br>
 	 */
 	@Test
 	public void testAddUsers1() {
@@ -63,7 +61,6 @@ public class RedisSpringTest {
 
 	/**
 	 * 批量新增 pipeline方式 <br>
-	 * ------------------------------<br>
 	 */
 	@Test
 	public void testAddUsers2() {
@@ -82,7 +79,6 @@ public class RedisSpringTest {
 
 	/**
 	 * 修改 <br>
-	 * ------------------------------<br>
 	 */
 	@Test
 	public void testUpdate() {
@@ -95,7 +91,6 @@ public class RedisSpringTest {
 
 	/**
 	 * 通过key删除单个 <br>
-	 * ------------------------------<br>
 	 */
 	@Test
 	public void testDelete() {
@@ -105,7 +100,6 @@ public class RedisSpringTest {
 
 	/**
 	 * 批量删除 <br>
-	 * ------------------------------<br>
 	 */
 	@Test
 	public void testDeletes() {
@@ -118,7 +112,6 @@ public class RedisSpringTest {
 
 	/**
 	 * 获取 <br>
-	 * ------------------------------<br>
 	 */
 	@Test
 	public void testGetUser() {

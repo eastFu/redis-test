@@ -78,9 +78,7 @@ public class RedisClient {
     rpop(key)：返回并删除名称为key的list中的尾元素
     blpop(key1, key2,… key N, timeout)：lpop命令的block版本。
     brpop(key1, key2,… key N, timeout)：rpop的block版本。
-    rpoplpush(srckey, dstkey)：返回并删除名称为srckey的list的尾元素，
-
-　　　　　　　　　　　　　　并将该元素添加到名称为dstkey的list的头部
+    rpoplpush(srckey, dstkey)：返回并删除名称为srckey的list的尾元素，并将该元素添加到名称为dstkey的list的头部
     
     7）Set
     sadd(key, member)：向名称为key的set中添加元素member
@@ -111,7 +109,6 @@ public class RedisClient {
     hvals(key)：返回名称为key的hash中所有键对应的value
     hgetall(key)：返回名称为key的hash中所有的键（field）及其对应的value
 	 */
-	
 	
 	//Jedis ShardedJedis 单点和集群的区别
 	private Jedis jedis;// 非切片额客户端连接
@@ -152,7 +149,7 @@ public class RedisClient {
 	 * 初始化非切片池
 	 */
 	private void initialPool() {
-		jedisPool = new JedisPool(config, "192.168.0.111", 6379);
+		jedisPool = new JedisPool(config, "127.0.0.1", 6379);
 	}
 
 	/**
@@ -161,7 +158,7 @@ public class RedisClient {
 	private void initialShardedPool() {
 		// slave链接
 		List<JedisShardInfo> shards = new ArrayList<JedisShardInfo>();
-		shards.add(new JedisShardInfo("192.168.0.111", 6379, "master"));
+		shards.add(new JedisShardInfo("127.0.0.1", 6379, "master"));
 		// 构造池
 		shardedJedisPool = new ShardedJedisPool(config, shards);
 	}
@@ -221,13 +218,13 @@ public class RedisClient {
         // 查看key所储存的值的类型
         System.out.println("查看key所储存的值的类型："+jedis.type("key001"));
         /*
-         * 一些其他方法：1、修改键名：jedis.rename("key6", "key0");
-         *             2、将当前db的key移动到给定的db当中：jedis.move("foo", 1)
+         * 一些其他方法：
+         * 1、修改键名：jedis.rename("key6", "key0");
+         * 2、将当前db的key移动到给定的db当中：jedis.move("foo", 1)
          */
     }
 	
-	private void StringOperate() 
-    {  
+	private void StringOperate() {
         System.out.println("======================String_1=========================="); 
         // 清空数据 
         System.out.println("清空库中所有数据："+jedis.flushDB());
@@ -301,8 +298,7 @@ public class RedisClient {
         System.out.println("获取key302对应值中的子串："+shardedJedis.getrange("key302", 5, 7));         
     }
 	
-	private void ListOperate() 
-    { 
+	private void ListOperate() {
         System.out.println("======================list=========================="); 
         // 清空数据 
         System.out.println("清空库中所有数据："+jedis.flushDB()); 
@@ -358,10 +354,8 @@ public class RedisClient {
         System.out.println("获取下标为2的元素："+shardedJedis.lindex("stringlists", 2)+"\n");
     }
 	
-	private void SetOperate() 
-    { 
-
-        System.out.println("======================set=========================="); 
+	private void SetOperate() {
+        System.out.println("======================set==========================");
         // 清空数据 
         System.out.println("清空库中所有数据："+jedis.flushDB());
         
@@ -376,8 +370,6 @@ public class RedisClient {
         System.out.println("=============删=============");
         System.out.println("集合sets中删除元素element003："+jedis.srem("sets", "element003"));
         System.out.println("查看sets集合中的所有元素:"+jedis.smembers("sets"));
-        /*System.out.println("sets集合中任意位置的元素出栈："+jedis.spop("sets"));//注：出栈元素位置居然不定？--无实际意义
-        System.out.println("查看sets集合中的所有元素:"+jedis.smembers("sets"));*/
         System.out.println();
         
         System.out.println("=============改=============");
@@ -406,11 +398,9 @@ public class RedisClient {
         System.out.println("sets1和sets2交集："+jedis.sinter("sets1", "sets2"));
         System.out.println("sets1和sets2并集："+jedis.sunion("sets1", "sets2"));
         System.out.println("sets1和sets2差集："+jedis.sdiff("sets1", "sets2"));//差集：set1中有，set2中没有的元素
-        
     }
 	
-	private void SortedSetOperate() 
-    { 
+	private void SortedSetOperate() {
         System.out.println("======================zset=========================="); 
         // 清空数据 
         System.out.println(jedis.flushDB()); 
@@ -470,7 +460,6 @@ public class RedisClient {
         System.out.println("获取hashs中所有的key："+shardedJedis.hkeys("hashs"));
         System.out.println("获取hashs中所有的value："+shardedJedis.hvals("hashs"));
         System.out.println();
-              
     }
 	
 }

@@ -95,7 +95,8 @@ public class RedisClient {
     sdiffstore(dstkey, (keys)) ：求差集并将差集保存到dstkey的集合
     smembers(key) ：返回名称为key的set的所有元素
     srandmember(key) ：随机返回名称为key的set的一个元素
-    
+
+     
     8）Hash
     hset(key, field, value)：向名称为key的hash中添加元素field
     hget(key, field)：返回名称为key的hash中field对应的value

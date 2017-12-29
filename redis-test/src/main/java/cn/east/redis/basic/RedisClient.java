@@ -96,7 +96,7 @@ public class RedisClient {
     smembers(key) ：返回名称为key的set的所有元素
     srandmember(key) ：随机返回名称为key的set的一个元素
 
-     
+
     8）Hash
     hset(key, field, value)：向名称为key的hash中添加元素field
     hget(key, field)：返回名称为key的hash中field对应的value
@@ -279,6 +279,7 @@ public class RedisClient {
         System.out.println("当key302存在时，尝试新增key302："+shardedJedis.setnx("key302", "value302_new"));
         System.out.println("获取key301对应的值："+shardedJedis.get("key301"));
         System.out.println("获取key302对应的值："+shardedJedis.get("key302"));
+
         
         System.out.println("=============超过有效期键值对被删除=============");
         // 设置key的有效期，并存储数据 

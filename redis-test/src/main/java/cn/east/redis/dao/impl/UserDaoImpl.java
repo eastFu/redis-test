@@ -18,9 +18,11 @@ import cn.east.redis.model.User;
 
 @Component("userDaoImpl")
 public class UserDaoImpl  implements IUserDao{
+
 	
     private RedisTemplate<String, User> redisTemplate;
-	
+
+
 	public void setRedisTemplate(RedisTemplate<String, User> redisTemplate) {
 		this.redisTemplate = redisTemplate;
 	}
